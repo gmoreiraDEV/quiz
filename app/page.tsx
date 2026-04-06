@@ -1,9 +1,13 @@
-import { ExternalLink } from "lucide-react";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 import { LurenessMark } from "@/components/brand/lureness-mark";
 import { publicEnv } from "@/lib/env";
-import { buildTypebotViewerUrl } from "@/lib/typebot";
+import TypebotIER from "@/components/typebot-ier";
+import {
+  buildTypebotPrefilledVariables,
+  resolveTypebotStandardConfig,
+} from "@/lib/typebot";
 
 export const metadata: Metadata = {
   title: "Diagnóstico IER",
@@ -15,11 +19,27 @@ type HomePageProps = {
 
 export default async function Home({ searchParams }: HomePageProps) {
   const resolvedSearchParams = await searchParams;
-  const typebotViewerUrl = buildTypebotViewerUrl({
+  const requestHeaders = await headers();
+  const host =
+    requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "";
+  const protocol = requestHeaders.get("x-forwarded-proto") ?? "https";
+  const origin = host ? `${protocol}://${host}` : "";
+  const leadToken = crypto.randomUUID();
+  const sdrUrl = origin
+    ? `${origin}/sdr?lead_token=${encodeURIComponent(leadToken)}`
+    : `/sdr?lead_token=${encodeURIComponent(leadToken)}`;
+  const typebotConfig = resolveTypebotStandardConfig({
+    explicitApiHost: publicEnv.ierTypebotApiHost,
+    explicitTypebot: publicEnv.ierTypebotId,
     publicUrl: publicEnv.ierTypebotPublicUrl,
+  });
+  const typebotPrefilledVariables = buildTypebotPrefilledVariables({
+    extraVariables: {
+      lead_token: leadToken,
+      sdr_url: sdrUrl,
+    },
     searchParams: resolvedSearchParams,
   });
-  const hasTypebotEmbed = Boolean(typebotViewerUrl);
 
   return (
     <main className="page-frame bg-lureness-glow text-foreground">
@@ -46,26 +66,12 @@ export default async function Home({ searchParams }: HomePageProps) {
           </div>
 
           <section className="surface-panel-strong overflow-hidden p-0 shadow-xl">
-            {hasTypebotEmbed ? (
-              <>
-                <iframe
-                  src={typebotViewerUrl}
-                  title="Diagnóstico IER da Lureness"
-                  className="block h-[calc(100vh-10rem)] min-h-[780px] w-full border-0 bg-background"
-                  allow="clipboard-write; microphone"
-                />
-                <div className="flex flex-wrap items-center justify-end gap-3 border-t border-border/70 bg-card/70 px-6 py-4">
-                  <a
-                    href={typebotViewerUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-border/70 bg-transparent px-5 py-3 text-sm font-medium text-foreground shadow-sm transition-colors hover:bg-muted/30"
-                  >
-                    Abrir direto
-                    <ExternalLink className="size-4" />
-                  </a>
-                </div>
-              </>
+            {typebotConfig ? (
+              <TypebotIER
+                apiHost={typebotConfig.apiHost}
+                prefilledVariables={typebotPrefilledVariables}
+                typebot={typebotConfig.typebot}
+              />
             ) : (
               <div className="px-6 py-8">
                 <div className="mx-auto max-w-2xl rounded-[1.6rem] border border-dashed border-border/80 bg-background/80 p-6 text-center">
@@ -78,7 +84,15 @@ export default async function Home({ searchParams }: HomePageProps) {
                     <code className="mx-1 rounded bg-muted px-1.5 py-0.5 text-xs">
                       NEXT_PUBLIC_IER_TYPEBOT_PUBLIC_URL
                     </code>
-                    com a URL pública do bot publicado.
+                    ou informe
+                    <code className="mx-1 rounded bg-muted px-1.5 py-0.5 text-xs">
+                      NEXT_PUBLIC_IER_TYPEBOT_ID
+                    </code>
+                    e
+                    <code className="mx-1 rounded bg-muted px-1.5 py-0.5 text-xs">
+                      NEXT_PUBLIC_IER_TYPEBOT_API_HOST
+                    </code>
+                    .
                   </p>
                 </div>
               </div>

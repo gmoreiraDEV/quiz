@@ -1,0 +1,910 @@
+{
+  "version": "6",
+  "id": "b41jp0de1s0fn2mnmznjggxc",
+  "name": "IER - Índice de Eficiência de Receita",
+  "events": [
+    {
+      "id": "evt_start_ier",
+      "outgoingEdgeId": "edge_evt_to_intro",
+      "graphCoordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "type": "start"
+    }
+  ],
+  "groups": [
+    {
+      "id": "ggj43jxsuby0mc225d9ge4i0c",
+      "title": "Introdução",
+      "graphCoordinates": {
+        "x": -13.19,
+        "y": 112.76
+      },
+      "blocks": [
+        {
+          "id": "bhuwg3jjlcmf8l2wr3x24nlbb",
+          "type": "text",
+          "content": {
+            "html": "<p>Índice de Eficiência de Receita (IER)</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Índice de Eficiência de Receita (IER)"
+                  }
+                ]
+              }
+            ],
+            "plainText": "Índice de Eficiência de Receita (IER)"
+          }
+        },
+        {
+          "id": "b6v3bc2vzeubihwuooipea6ti",
+          "outgoingEdgeId": "ergwt0ia2emld2ihacnn4qykn",
+          "type": "text",
+          "content": {
+            "html": "<p>Descubra em 2 minutos se sua operação está construindo patrimônio ou apenas 'moendo' dinheiro para manter o crescimento. Responda com sinceridade.</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Descubra em 2 minutos se sua operação está construindo patrimônio ou apenas 'moendo' dinheiro para manter o crescimento. Responda com sinceridade."
+                  }
+                ]
+              }
+            ],
+            "plainText": "Descubra em 2 minutos se sua operação está construindo patrimônio ou apenas 'moendo' dinheiro para manter o crescimento. Responda com sinceridade."
+          }
+        }
+      ]
+    },
+    {
+      "id": "gf70z5v5jrxs62lbgn2cq4wpy",
+      "title": "Grupo 1: Marca & Atração",
+      "graphCoordinates": {
+        "x": 450,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "bpav44qrl4l86xjujmssyy1sp",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "id": "NTpp-2zZ2P",
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Marca & Atração — Como o mercado reage à sua comunicação hoje?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b30aln99tgbsyy9h77m9gelib",
+          "outgoingEdgeId": "esues3ol0ycmcz40zvkmcbsya",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "icj1cr9dve324ey8hv2cimjyy",
+              "outgoingEdgeId": "evnb5y9bmg55j2nmixngcqc64",
+              "content": "A) O lead chega entendendo nosso valor e o comercial foca na solução."
+            },
+            {
+              "id": "ifq6vb2ans7khhte3ws2toql9",
+              "outgoingEdgeId": "exhhjolqsez1k0t2bzdinplpd",
+              "content": "B) O lead chega atraído por promoções e o comercial gasta 80% do tempo negociando desconto."
+            },
+            {
+              "id": "izgvrtr3q95aps3f3qxkrde7a",
+              "outgoingEdgeId": "eg0iwpbayv6vew9dqbuk3iapu",
+              "content": "C) O lead chega confuso ou desqualificado (\"não era o que eu esperava\")."
+            },
+            {
+              "id": "ih0gaootm10to9iffsv0ll5hy",
+              "outgoingEdgeId": "ehr2cjr3898arqhdqgubz8dbx",
+              "content": "D) Não temos uma comunicação ativa; dependemos 100% de indicações orgânicas / aleatórias."
+            }
+          ],
+          "options": {
+            "variableId": "vieekwyuzv6b6tgl4wy66pydj",
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "gtytykcueqqisb4uamxs57t80",
+      "title": "Grupo 2: Marketing & Resposta",
+      "graphCoordinates": {
+        "x": 800,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "bkv7icjj858d5uynxvp9pbi5g",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "id": "jguZU_Iyue",
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Marketing & Resposta — Quando um lead demonstra interesse, qual é o processo real?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "bp7yu8osxroscp5ozrvcyg1xy",
+          "outgoingEdgeId": "ejlu86x35yim7dagdegimd4t7",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "ipo714zm0x85ubl9d5wjhxhif",
+              "outgoingEdgeId": "eqn8qn053pdo3sg10iaffvwwn",
+              "content": "A) Resposta em até 15 min com abordagem consultiva e registro automático no sistema / CRM."
+            },
+            {
+              "id": "ix9h6rkvwp5x6e87ppmn1tnor",
+              "outgoingEdgeId": "e7grswv9chkk55z5xn714895i",
+              "content": "B) O vendedor recebe o contato e atende \"quando sobra tempo\" (geralmente horas depois)."
+            },
+            {
+              "id": "isacocz9opm5tbxnzdb8mx7qt",
+              "outgoingEdgeId": "eo93ez6mc2ny2crt7iqajb505",
+              "content": "C) O contato cai em um e-mail ou WhatsApp geral e muitas vezes se perde."
+            }
+          ],
+          "options": {
+            "variableId": "v70ir9jrh2faajo94wac78vgw",
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "gen40skj481e704m07vy86m77",
+      "title": "Grupo 3: Conexão entre Marketing & Vendas",
+      "graphCoordinates": {
+        "x": 1150,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "bwbsy0samo04nq0ibxv9j8k82",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "id": "l7zPc5t2tY",
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Conexão entre Marketing & Vendas — Marketing e Vendas possuem um \"contrato\" (SLA) definido sobre o que é um cliente ideal?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "bl0rct0jxwhrbywifnqcxjzol",
+          "outgoingEdgeId": "eitc3erug9mm19s21639y6fgf",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "ijutnyiqr2jfrnkg8psn9x67r",
+              "outgoingEdgeId": "emwbjqjuz3336cd3dzfh9nnyb",
+              "content": "A) Sim, os critérios são claros e o feedback de vendas ajusta as campanhas de marketing."
+            },
+            {
+              "id": "iubfe3d11ymibi10vlxhb1aho",
+              "outgoingEdgeId": "einzp4wd2mlo1ofdhwpuhg7kg",
+              "content": "B) Temos uma ideia de quem é o cliente, mas há conflitos constantes sobre a qualidade dos leads."
+            },
+            {
+              "id": "ipsgyr650lwzy4jci3s6yjdh0",
+              "outgoingEdgeId": "eeszjv8x2tp8ycacqa85khowp",
+              "content": "C) Não, o foco é gerar volume e ver no que vai dar."
+            }
+          ],
+          "options": {
+            "variableId": "vr19bm6y6i18w83jsmtd98ag5",
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "go33ts4v5w4u8f7jdqlmm81hi",
+      "title": "Grupo 4: Base proprietária, Tecnologia & Dados",
+      "graphCoordinates": {
+        "x": 1500,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "bvozj1tcwboxl06tqc9c8kdcu",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "id": "5-Eg11QLiB",
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Base proprietária, Tecnologia & Dados — Onde vive a \"verdade\" sobre os números da sua empresa hoje?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "brtq577flgvvh4cgb68h6f8o7",
+          "outgoingEdgeId": "egadiabbenyy5nhcdu1rhzdzt",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "i96zkcqyen2iawq4f3q8qrg1t",
+              "outgoingEdgeId": "e3x1guflt8g648z3itlbz1b27",
+              "content": "A) Em um CRM unificado, com dashboards que eu (CEO) acompanho pelo celular."
+            },
+            {
+              "id": "i2qpwwyotn6ztufao70vijl13",
+              "outgoingEdgeId": "ebvfbn9lswuq215l8hl7dcizh",
+              "content": "B) No CRM, mas os dados são alimentados de forma incompleta e confusa."
+            },
+            {
+              "id": "iavrgtta3r8s92xhv0036slh4",
+              "outgoingEdgeId": "eph8qphdec4li3z8i87zsczn3",
+              "content": "C) Em planilhas paralelas, cadernos ou apenas na cabeça dos vendedores."
+            }
+          ],
+          "options": {
+            "variableId": "v01v566zyc44ilhykwdon8txv",
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "gmvjhmz9vxzuo85lrnbii2kve",
+      "title": "Grupo 5: Onboarding & Retenção",
+      "graphCoordinates": {
+        "x": 1850,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "bozo0belodzgpkhs9h9bnu9yh",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "id": "g1dVXesSD8",
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Onboarding & Retenção — O que acontece após a assinatura do contrato (o \"Momento Zero\")?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "b4v5ihlim9qjhhmqk5q4qu0ki",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "ilzera6e8d7bunhfq3f6e2fk8",
+              "outgoingEdgeId": "c7nsz1gnu5micgiwsa0bor1v",
+              "content": "A) Existe um rito de passagem estruturado para garantir que o cliente tenha sucesso imediato."
+            },
+            {
+              "id": "i226x7llptbequk17cw6predo",
+              "outgoingEdgeId": "u8uwl3o0rq4i916rubuyu3hm",
+              "content": "B) O cliente é entregue ao operacional, mas não temos métricas de satisfação ou sucesso."
+            },
+            {
+              "id": "isi5rtye84mv6uv1ymow22g28",
+              "outgoingEdgeId": "l4dow8681z41v7icqwxrl5hp",
+              "content": "C) O vendedor some e o cliente só recebe contato novamente na hora de pagar ou renovar."
+            }
+          ],
+          "options": {
+            "variableId": "vo6qw3q0sotpfh2p21rtx5s4f",
+            "isMultipleChoice": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "gch353tl56mjbn1p2qyzaxdda",
+      "title": "Resultado",
+      "graphCoordinates": {
+        "x": 2700,
+        "y": 0
+      },
+      "blocks": [
+        {
+          "id": "b8k7xlfeo811ks5b9q3x1as5s",
+          "type": "text",
+          "content": {
+            "html": "<p>Resultado do seu diagnóstico</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Resultado do seu diagnóstico"
+                  }
+                ]
+              }
+            ],
+            "plainText": "Resultado do seu diagnóstico"
+          }
+        },
+        {
+          "id": "ban9wpigtgupdw1avy3teubky",
+          "type": "text",
+          "content": {
+            "html": "<p>Pontuação total: {{totalScore}} pontos</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Pontuação total: {{totalScore}} pontos"
+                  }
+                ]
+              }
+            ],
+            "plainText": "Pontuação total: {{totalScore}} pontos"
+          }
+        },
+        {
+          "id": "b1o06embzn9u62s91jg5gm5xe",
+          "type": "text",
+          "content": {
+            "html": "<p>Classificação: {{tier}}</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Classificação: {{tier}}"
+                  }
+                ]
+              }
+            ],
+            "plainText": "Classificação: {{tier}}"
+          }
+        },
+        {
+          "id": "bldx6rjnwgdxa8an669auab0t",
+          "type": "text",
+          "content": {
+            "html": "<p>{{diagnosis}}</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "{{diagnosis}}"
+                  }
+                ]
+              }
+            ],
+            "plainText": "{{diagnosis}}"
+          }
+        },
+        {
+          "id": "bwxernus6eis5785i3hqfazgd",
+          "type": "text",
+          "content": {
+            "html": "<p>{{recommendation}}</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "{{recommendation}}"
+                  }
+                ]
+              }
+            ],
+            "plainText": "{{recommendation}}"
+          }
+        },
+        {
+          "id": "b7m9w4x2q6v8n1k3r5t0c2p7d",
+          "type": "text",
+          "content": {
+            "html": "<p>Para liberar sua leitura estratégica e a próxima etapa, deixe seus dados.</p>",
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Para liberar sua leitura estratégica e a próxima etapa, deixe seus dados."
+                  }
+                ]
+              }
+            ],
+            "plainText": "Para liberar sua leitura estratégica e a próxima etapa, deixe seus dados."
+          }
+        },
+        {
+          "id": "bm2l3q6v9k1t5c8r4p7n0x2hz",
+          "type": "text input",
+          "options": {
+            "labels": {
+              "placeholder": "Seu nome",
+              "button": "Continuar"
+            },
+            "variableId": "v3l6l9hj3v3e9g7k2t4p8m1ra",
+            "inputMode": "text"
+          }
+        },
+        {
+          "id": "bt4x7m1q8r3n6c2v9k5p0z4ly",
+          "type": "email input",
+          "options": {
+            "labels": {
+              "placeholder": "Seu melhor e-mail",
+              "button": "Continuar"
+            },
+            "variableId": "v7m4p2n9c1x6r3q8t5z0k4hya"
+          }
+        },
+        {
+          "id": "bf8p2v6m1q4z7k3c9r5t0n8ya",
+          "type": "phone number input",
+          "options": {
+            "labels": {
+              "placeholder": "Seu WhatsApp",
+              "button": "Finalizar"
+            },
+            "variableId": "v8q1n4k7m2r5c9t3p6x0z8hya",
+            "defaultCountryCode": "BR"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ydmny2g4u568jqp30hbur3rs",
+      "title": "Cálculo do resultado",
+      "graphCoordinates": {
+        "x": 2297.28,
+        "y": 59.82
+      },
+      "blocks": [
+        {
+          "id": "m8i7gv4a68dm3g5nexsvbbaw",
+          "type": "Set variable",
+          "options": {
+            "variableId": "vwzenfm8wkwj1mlg66v7nwspy",
+            "isExecutedOnClient": true,
+            "isUnsafe": false,
+            "expressionToEvaluate": "({{g1}} === 'A) O lead chega entendendo nosso valor e o comercial foca na solução.' ? 20 :\n {{g1}} === 'B) O lead chega atraído por promoções e o comercial gasta 80% do tempo negociando desconto.' ? 10 :\n {{g1}} === 'C) O lead chega confuso ou desqualificado (\"não era o que eu esperava\").' ? 5 : 0)\n+\n({{g2}} === 'A) Resposta em até 15 min com abordagem consultiva e registro automático no sistema / CRM.' ? 20 :\n {{g2}} === 'B) O vendedor recebe o contato e atende \"quando sobra tempo\" (geralmente horas depois).' ? 10 : 0)\n+\n({{g3}} === 'A) Sim, os critérios são claros e o feedback de vendas ajusta as campanhas de marketing.' ? 20 :\n {{g3}} === 'B) Temos uma ideia de quem é o cliente, mas há conflitos constantes sobre a qualidade dos leads.' ? 10 : 0)\n+\n({{g4}} === 'A) Em um CRM unificado, com dashboards que eu (CEO) acompanho pelo celular.' ? 20 :\n {{g4}} === 'B) No CRM, mas os dados são alimentados de forma incompleta e confusa.' ? 10 : 0)\n+\n({{g5}} === 'A) Existe um rito de passagem estruturado para garantir que o cliente tenha sucesso imediato.' ? 20 :\n {{g5}} === 'B) O cliente é entregue ao operacional, mas não temos métricas de satisfação ou sucesso.' ? 5 : 0)",
+            "isCode": true
+          }
+        },
+        {
+          "id": "dxcjctx5fhjozrp2nw97ejjk",
+          "type": "Set variable",
+          "options": {
+            "variableId": "vocjznwggb8wrvgyuguv1tnct",
+            "isExecutedOnClient": true,
+            "isUnsafe": false,
+            "expressionToEvaluate": "{{totalScore}} >= 85 ? 'Operação Elite' : {{totalScore}} >= 55 ? 'Vazamento de Margem' : {{totalScore}} >= 30 ? 'Risco Operacional' : 'Caos de Receita'",
+            "isCode": true
+          }
+        },
+        {
+          "id": "fo2l0k10pmytox1scf9ekxex",
+          "type": "Set variable",
+          "options": {
+            "variableId": "vxoj3nme64nkl3cdy3jewk52x",
+            "isExecutedOnClient": true,
+            "isUnsafe": false,
+            "expressionToEvaluate": "{{totalScore}} >= 85 ? 'Sua máquina está azeitada.' : {{totalScore}} >= 55 ? 'Você cresce, mas gasta muito mais do que deveria para atrair e manter clientes.' : {{totalScore}} >= 30 ? 'Seus silos estão destruindo o lucro. O custo de aquisição (CAC) está sufocando o caixa.' : 'A operação é reativa. Sem intervenção estrutural, a escala será o seu maior prejuízo.'",
+            "isCode": true
+          }
+        },
+        {
+          "id": "ml52f43ach87ykifxkm3ih5k",
+          "outgoingEdgeId": "xrbnezz6mozirxmq3rmbc5w1",
+          "type": "Set variable",
+          "options": {
+            "variableId": "vfvnmbl2grnqdoa38sota6aaw",
+            "isExecutedOnClient": true,
+            "isUnsafe": false,
+            "expressionToEvaluate": "{{totalScore}} >= 85 ? 'O desafio agora é escala e inovação para não estagnar.' : {{totalScore}} >= 55 ? 'Você já tem base para crescer, mas precisa reduzir desperdícios e alinhar a operação.' : {{totalScore}} >= 30 ? 'É hora de corrigir processo, integração e acompanhamento para parar de perder margem.' : 'Você precisa de intervenção estrutural urgente em marketing, vendas, dados e retenção.'",
+            "isCode": true
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_evt_to_intro",
+      "from": {
+        "eventId": "evt_start_ier"
+      },
+      "to": {
+        "groupId": "ggj43jxsuby0mc225d9ge4i0c"
+      }
+    },
+    {
+      "id": "ergwt0ia2emld2ihacnn4qykn",
+      "from": {
+        "blockId": "b6v3bc2vzeubihwuooipea6ti"
+      },
+      "to": {
+        "groupId": "gf70z5v5jrxs62lbgn2cq4wpy"
+      }
+    },
+    {
+      "id": "evnb5y9bmg55j2nmixngcqc64",
+      "from": {
+        "blockId": "b30aln99tgbsyy9h77m9gelib",
+        "itemId": "icj1cr9dve324ey8hv2cimjyy"
+      },
+      "to": {
+        "groupId": "gtytykcueqqisb4uamxs57t80"
+      }
+    },
+    {
+      "id": "exhhjolqsez1k0t2bzdinplpd",
+      "from": {
+        "blockId": "b30aln99tgbsyy9h77m9gelib",
+        "itemId": "ifq6vb2ans7khhte3ws2toql9"
+      },
+      "to": {
+        "groupId": "gtytykcueqqisb4uamxs57t80"
+      }
+    },
+    {
+      "id": "eg0iwpbayv6vew9dqbuk3iapu",
+      "from": {
+        "blockId": "b30aln99tgbsyy9h77m9gelib",
+        "itemId": "izgvrtr3q95aps3f3qxkrde7a"
+      },
+      "to": {
+        "groupId": "gtytykcueqqisb4uamxs57t80"
+      }
+    },
+    {
+      "id": "ehr2cjr3898arqhdqgubz8dbx",
+      "from": {
+        "blockId": "b30aln99tgbsyy9h77m9gelib",
+        "itemId": "ih0gaootm10to9iffsv0ll5hy"
+      },
+      "to": {
+        "groupId": "gtytykcueqqisb4uamxs57t80"
+      }
+    },
+    {
+      "id": "eqn8qn053pdo3sg10iaffvwwn",
+      "from": {
+        "blockId": "bp7yu8osxroscp5ozrvcyg1xy",
+        "itemId": "ipo714zm0x85ubl9d5wjhxhif"
+      },
+      "to": {
+        "groupId": "gen40skj481e704m07vy86m77"
+      }
+    },
+    {
+      "id": "e7grswv9chkk55z5xn714895i",
+      "from": {
+        "blockId": "bp7yu8osxroscp5ozrvcyg1xy",
+        "itemId": "ix9h6rkvwp5x6e87ppmn1tnor"
+      },
+      "to": {
+        "groupId": "gen40skj481e704m07vy86m77"
+      }
+    },
+    {
+      "id": "eo93ez6mc2ny2crt7iqajb505",
+      "from": {
+        "blockId": "bp7yu8osxroscp5ozrvcyg1xy",
+        "itemId": "isacocz9opm5tbxnzdb8mx7qt"
+      },
+      "to": {
+        "groupId": "gen40skj481e704m07vy86m77"
+      }
+    },
+    {
+      "id": "emwbjqjuz3336cd3dzfh9nnyb",
+      "from": {
+        "blockId": "bl0rct0jxwhrbywifnqcxjzol",
+        "itemId": "ijutnyiqr2jfrnkg8psn9x67r"
+      },
+      "to": {
+        "groupId": "go33ts4v5w4u8f7jdqlmm81hi"
+      }
+    },
+    {
+      "id": "einzp4wd2mlo1ofdhwpuhg7kg",
+      "from": {
+        "blockId": "bl0rct0jxwhrbywifnqcxjzol",
+        "itemId": "iubfe3d11ymibi10vlxhb1aho"
+      },
+      "to": {
+        "groupId": "go33ts4v5w4u8f7jdqlmm81hi"
+      }
+    },
+    {
+      "id": "eeszjv8x2tp8ycacqa85khowp",
+      "from": {
+        "blockId": "bl0rct0jxwhrbywifnqcxjzol",
+        "itemId": "ipsgyr650lwzy4jci3s6yjdh0"
+      },
+      "to": {
+        "groupId": "go33ts4v5w4u8f7jdqlmm81hi"
+      }
+    },
+    {
+      "id": "e3x1guflt8g648z3itlbz1b27",
+      "from": {
+        "blockId": "brtq577flgvvh4cgb68h6f8o7",
+        "itemId": "i96zkcqyen2iawq4f3q8qrg1t"
+      },
+      "to": {
+        "groupId": "gmvjhmz9vxzuo85lrnbii2kve"
+      }
+    },
+    {
+      "id": "ebvfbn9lswuq215l8hl7dcizh",
+      "from": {
+        "blockId": "brtq577flgvvh4cgb68h6f8o7",
+        "itemId": "i2qpwwyotn6ztufao70vijl13"
+      },
+      "to": {
+        "groupId": "gmvjhmz9vxzuo85lrnbii2kve"
+      }
+    },
+    {
+      "id": "eph8qphdec4li3z8i87zsczn3",
+      "from": {
+        "blockId": "brtq577flgvvh4cgb68h6f8o7",
+        "itemId": "iavrgtta3r8s92xhv0036slh4"
+      },
+      "to": {
+        "groupId": "gmvjhmz9vxzuo85lrnbii2kve"
+      }
+    },
+    {
+      "id": "l4dow8681z41v7icqwxrl5hp",
+      "from": {
+        "blockId": "b4v5ihlim9qjhhmqk5q4qu0ki",
+        "itemId": "isi5rtye84mv6uv1ymow22g28"
+      },
+      "to": {
+        "groupId": "ydmny2g4u568jqp30hbur3rs"
+      }
+    },
+    {
+      "id": "u8uwl3o0rq4i916rubuyu3hm",
+      "from": {
+        "blockId": "b4v5ihlim9qjhhmqk5q4qu0ki",
+        "itemId": "i226x7llptbequk17cw6predo"
+      },
+      "to": {
+        "groupId": "ydmny2g4u568jqp30hbur3rs"
+      }
+    },
+    {
+      "id": "c7nsz1gnu5micgiwsa0bor1v",
+      "from": {
+        "blockId": "b4v5ihlim9qjhhmqk5q4qu0ki",
+        "itemId": "ilzera6e8d7bunhfq3f6e2fk8"
+      },
+      "to": {
+        "groupId": "ydmny2g4u568jqp30hbur3rs"
+      }
+    },
+    {
+      "id": "xrbnezz6mozirxmq3rmbc5w1",
+      "from": {
+        "blockId": "ml52f43ach87ykifxkm3ih5k"
+      },
+      "to": {
+        "groupId": "gch353tl56mjbn1p2qyzaxdda"
+      }
+    }
+  ],
+  "variables": [
+    {
+      "id": "vieekwyuzv6b6tgl4wy66pydj",
+      "name": "g1",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v70ir9jrh2faajo94wac78vgw",
+      "name": "g2",
+      "isSessionVariable": false
+    },
+    {
+      "id": "vr19bm6y6i18w83jsmtd98ag5",
+      "name": "g3",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v01v566zyc44ilhykwdon8txv",
+      "name": "g4",
+      "isSessionVariable": false
+    },
+    {
+      "id": "vo6qw3q0sotpfh2p21rtx5s4f",
+      "name": "g5",
+      "isSessionVariable": false
+    },
+    {
+      "id": "vwzenfm8wkwj1mlg66v7nwspy",
+      "name": "totalScore"
+    },
+    {
+      "id": "vocjznwggb8wrvgyuguv1tnct",
+      "name": "tier"
+    },
+    {
+      "id": "vxoj3nme64nkl3cdy3jewk52x",
+      "name": "diagnosis"
+    },
+    {
+      "id": "vfvnmbl2grnqdoa38sota6aaw",
+      "name": "recommendation"
+    },
+    {
+      "id": "v3l6l9hj3v3e9g7k2t4p8m1ra",
+      "name": "respondent_name",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v7m4p2n9c1x6r3q8t5z0k4hya",
+      "name": "email",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v8q1n4k7m2r5c9t3p6x0z8hya",
+      "name": "phone_number",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v0q3n6r9k2x5c8t1m4p7h0lya",
+      "name": "lead_token",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v8m5q2t9c6x3r0n7k4p1h8lya",
+      "name": "sdr_url",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v2p5x8n1r4c7t0m3q6k9h2lya",
+      "name": "utm_source",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v6c9r2m5x8t1n4q7p0k3h6lya",
+      "name": "utm_medium",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v1n4t7x0c3r6m9q2p5k8h1lya",
+      "name": "utm_campaign",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v7x0m3q6r9c2n5t8p1k4h7lya",
+      "name": "utm_term",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v3r6n9t2x5c8m1q4p7k0h3lya",
+      "name": "utm_content",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v9t2m5x8c1r4n7q0p3k6h9lya",
+      "name": "gclid",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v4m7q0x3r6c9n2t5p8k1h4lya",
+      "name": "fbclid",
+      "isSessionVariable": false
+    },
+    {
+      "id": "v5n8r1t4x7c0m3q6p9k2h5lya",
+      "name": "ref",
+      "isSessionVariable": false
+    }
+  ],
+  "theme": {
+    "general": {
+      "font": {
+        "type": "Google"
+      },
+      "background": {
+        "type": "Color",
+        "content": "#FFFFFF"
+      },
+      "progressBar": {
+        "isEnabled": true,
+        "color": "#8d64f7"
+      }
+    },
+    "chat": {
+      "hostAvatar": {
+        "isEnabled": true,
+        "url": "https://quiz-production-8e2f.up.railway.app/img/favicon.png"
+      },
+      "guestAvatar": {
+        "isEnabled": false
+      },
+      "hostBubbles": {
+        "backgroundColor": "#F7F8FF",
+        "border": {
+          "thickness": 0
+        }
+      },
+      "guestBubbles": {
+        "backgroundColor": "#8d64f7",
+        "border": {
+          "thickness": 0
+        }
+      },
+      "buttons": {
+        "backgroundColor": "#8d64f7",
+        "border": {
+          "thickness": 0
+        }
+      },
+      "inputs": {
+        "shadow": "md",
+        "border": {
+          "thickness": 0
+        }
+      }
+    }
+  },
+  "selectedThemeTemplateId": "cmnni5l6z0007na1y822p6zc7",
+  "settings": {
+    "general": {
+      "isBrandingEnabled": false
+    },
+    "typingEmulation": {
+      "enabled": false,
+      "speed": 1,
+      "delayBetweenBubbles": 1
+    }
+  },
+  "createdAt": "2026-04-06T17:14:04.933Z",
+  "updatedAt": "2026-04-06T18:12:34.522Z",
+  "icon": null,
+  "folderId": "cmnng99rt0006nv1zv1etmqpf",
+  "publicId": "lureness-ier",
+  "customDomain": null,
+  "workspaceId": "cmnng8n960000nv1zzt16ao2m",
+  "resultsTablePreferences": null,
+  "isArchived": false,
+  "isClosed": false,
+  "whatsAppCredentialsId": null,
+  "riskLevel": null
+}

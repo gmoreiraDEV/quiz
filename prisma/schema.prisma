@@ -1,0 +1,119 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum QuizSubmissionStatus {
+  COMPLETED
+  INVALID
+}
+
+enum QuizSDRSessionStatus {
+  READY
+  COLLECTING_INFO
+  READY_TO_SCHEDULE
+  COMPLETED
+}
+
+enum QuizSDRMessageRole {
+  ASSISTANT
+  USER
+  SYSTEM
+}
+
+enum QuizBookingStatus {
+  PENDING
+  READY
+  REDIRECTED
+  SCHEDULED
+}
+
+model QuizLead {
+  id           String           @id @default(cuid())
+  leadToken    String           @unique @map("lead_token")
+  name         String?
+  email        String?
+  phoneNumber  String?          @map("phone_number")
+  utmSource    String?          @map("utm_source")
+  utmMedium    String?          @map("utm_medium")
+  utmCampaign  String?          @map("utm_campaign")
+  utmTerm      String?          @map("utm_term")
+  utmContent   String?          @map("utm_content")
+  gclid        String?
+  fbclid       String?
+  referrerCode String?          @map("referrer_code")
+  firstSeenAt  DateTime         @default(now()) @map("first_seen_at")
+  createdAt    DateTime         @default(now()) @map("created_at")
+  updatedAt    DateTime         @updatedAt @map("updated_at")
+  submissions  QuizSubmission[]
+  sdrSessions  QuizSDRSession[]
+
+  @@map("quiz_leads")
+}
+
+model QuizSubmission {
+  id                   String               @id @default(cuid())
+  leadId               String               @map("lead_id")
+  lead                 QuizLead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  externalSubmissionId String?              @unique @map("external_submission_id")
+  typebotResultId      String?              @map("typebot_result_id")
+  status               QuizSubmissionStatus @default(COMPLETED)
+  respondentName       String?              @map("respondent_name")
+  email                String?
+  phoneNumber          String?              @map("phone_number")
+  totalScore           Int?                 @map("total_score")
+  maxScore             Int?                 @map("max_score")
+  percentage           Int?
+  profileName          String?              @map("profile_name")
+  profileCode          String?              @map("profile_code")
+  profileSummary       String?              @map("profile_summary")
+  strongestPillarName  String?              @map("strongest_pillar_name")
+  weakestPillarName    String?              @map("weakest_pillar_name")
+  answers              Json?
+  variables            Json?
+  metadata             Json?
+  rawPayload           Json?                @map("raw_payload")
+  completedAt          DateTime?            @map("completed_at")
+  createdAt            DateTime             @default(now()) @map("created_at")
+  updatedAt            DateTime             @updatedAt @map("updated_at")
+  sdrSessions          QuizSDRSession[]
+
+  @@map("quiz_submissions")
+}
+
+model QuizSDRSession {
+  id                String               @id @default(cuid())
+  leadId            String               @map("lead_id")
+  lead              QuizLead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  submissionId      String?              @map("submission_id")
+  submission        QuizSubmission?      @relation(fields: [submissionId], references: [id], onDelete: SetNull)
+  status            QuizSDRSessionStatus @default(READY)
+  bookingStatus     QuizBookingStatus    @default(PENDING) @map("booking_status")
+  bookingUrl        String?              @map("booking_url")
+  stageKey          String?              @map("stage_key")
+  summary           String?
+  lastUserMessageAt DateTime?            @map("last_user_message_at")
+  completedAt       DateTime?            @map("completed_at")
+  createdAt         DateTime             @default(now()) @map("created_at")
+  updatedAt         DateTime             @updatedAt @map("updated_at")
+  messages          QuizSDRMessage[]
+
+  @@unique([leadId, submissionId])
+  @@map("quiz_sdr_sessions")
+}
+
+model QuizSDRMessage {
+  id        String             @id @default(cuid())
+  sessionId String             @map("session_id")
+  session   QuizSDRSession     @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role      QuizSDRMessageRole
+  content   String
+  metadata  Json?
+  createdAt DateTime           @default(now()) @map("created_at")
+
+  @@map("quiz_sdr_messages")
+}

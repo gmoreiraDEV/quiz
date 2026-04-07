@@ -61,6 +61,13 @@ export type PublicSDRMessage = {
 };
 
 export type PublicSDRSession = {
+  booking: {
+    confirmedAt: string | null;
+    eventUrl: string | null;
+    meetingUrl: string | null;
+    scheduledFor: string | null;
+    scheduledUntil: string | null;
+  };
   bookingStatus: string;
   bookingUrl: string | null;
   lead: {
@@ -539,6 +546,13 @@ function serializeSession(
   }
 
   return {
+    booking: {
+      confirmedAt: session.bookingConfirmedAt?.toISOString() ?? null,
+      eventUrl: session.googleCalendarEventUrl,
+      meetingUrl: session.googleCalendarMeetingUrl,
+      scheduledFor: session.scheduledFor?.toISOString() ?? null,
+      scheduledUntil: session.scheduledUntil?.toISOString() ?? null,
+    },
     bookingStatus: session.bookingStatus,
     bookingUrl: session.bookingUrl,
     lead: {
@@ -703,6 +717,10 @@ export async function getPublicSDRSession(leadToken: string) {
   return serializeSession(session);
 }
 
+export async function getBookingSessionRecord(leadToken: string) {
+  return getSDRSessionRecord(leadToken);
+}
+
 export async function getSDRSessionState(leadToken: string) {
   const lead = await prisma.quizLead.findUnique({
     where: {
@@ -803,4 +821,58 @@ export async function appendSDRMessage(args: {
     shouldRedirectToBooking:
       agentResult.nextStageKey === "ready_to_schedule",
   };
+}
+
+export async function confirmBookingForLead(args: {
+  bookingMetadata: unknown;
+  eventId: string;
+  eventUrl: string | null;
+  leadToken: string;
+  meetingUrl: string | null;
+  scheduledFor: string;
+  scheduledUntil: string;
+}) {
+  const session = await getSDRSessionRecord(args.leadToken);
+  if (!session) {
+    throw new Error("Sessão SDR não encontrada.");
+  }
+
+  const scheduledFor = new Date(args.scheduledFor);
+  const scheduledUntil = new Date(args.scheduledUntil);
+  const now = new Date();
+
+  await prisma.$transaction([
+    prisma.quizSDRSession.update({
+      where: {
+        id: session.id,
+      },
+      data: {
+        bookingConfirmedAt: now,
+        bookingMetadata: toInputJsonValue(args.bookingMetadata),
+        bookingStatus: QuizBookingStatus.SCHEDULED,
+        googleCalendarEventId: args.eventId,
+        googleCalendarEventUrl: args.eventUrl,
+        googleCalendarMeetingUrl: args.meetingUrl,
+        scheduledFor,
+        scheduledUntil,
+        stageKey: "scheduled",
+        status: QuizSDRSessionStatus.COMPLETED,
+      },
+    }),
+    prisma.quizSDRMessage.create({
+      data: {
+        content:
+          "Agendamento confirmado. O encontro estratégico já foi reservado no Google Calendar.",
+        role: QuizSDRMessageRole.SYSTEM,
+        sessionId: session.id,
+      },
+    }),
+  ]);
+
+  const updatedSession = await getPublicSDRSession(args.leadToken);
+  if (!updatedSession) {
+    throw new Error("Não foi possível carregar a sessão atualizada.");
+  }
+
+  return updatedSession;
 }

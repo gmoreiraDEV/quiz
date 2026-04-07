@@ -22,6 +22,27 @@ type SDRChatProps = {
   leadToken: string;
 };
 
+function getResultBadgeClasses(percentage: number | null | undefined) {
+  const normalizedPercentage =
+    typeof percentage === "number" && Number.isFinite(percentage)
+      ? percentage
+      : null;
+
+  if (normalizedPercentage !== null && normalizedPercentage >= 85) {
+    return "border-emerald-200/80 bg-emerald-100 text-emerald-800 dark:border-emerald-900/70 dark:bg-emerald-950/50 dark:text-emerald-200";
+  }
+
+  if (normalizedPercentage !== null && normalizedPercentage >= 55) {
+    return "border-sky-200/80 bg-sky-100 text-sky-800 dark:border-sky-900/70 dark:bg-sky-950/50 dark:text-sky-200";
+  }
+
+  if (normalizedPercentage !== null && normalizedPercentage >= 30) {
+    return "border-amber-200/80 bg-amber-100 text-amber-800 dark:border-amber-900/70 dark:bg-amber-950/50 dark:text-amber-200";
+  }
+
+  return "border-red-200/80 bg-red-100 text-red-800 dark:border-red-900/70 dark:bg-red-950/50 dark:text-red-200";
+}
+
 async function loadSession(leadToken: string) {
   const response = await fetch(
     `/api/sdr/session?lead_token=${encodeURIComponent(leadToken)}`,
@@ -114,6 +135,20 @@ export function SDRChat({ leadToken }: SDRChatProps) {
       session?.bookingStatus === "READY" ||
       session?.stageKey === "ready_to_schedule"
     );
+  }, [session]);
+
+  const resultBadgeClasses = useMemo(() => {
+    if (!session?.result) {
+      return getResultBadgeClasses(null);
+    }
+
+    const percentage =
+      session.result.percentage ??
+      (typeof session.result.totalScore === "number"
+        ? session.result.totalScore
+        : null);
+
+    return getResultBadgeClasses(percentage);
   }, [session]);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -228,7 +263,7 @@ export function SDRChat({ leadToken }: SDRChatProps) {
     <div className="grid gap-6 lg:grid-cols-[1.05fr_0.65fr]">
       <section className="surface-panel flex min-h-155 flex-col overflow-hidden p-0">
         <div className="border-b border-border/70 px-6 py-5">
-          <p className="eyebrow">SDR Lureness</p>
+          <p className="eyebrow">NEXT STEPS</p>
           <h1 className="mt-2 font-serif text-3xl tracking-tight text-foreground">
             Vamos transformar seu diagnóstico em próximo passo.
           </h1>
@@ -286,7 +321,7 @@ export function SDRChat({ leadToken }: SDRChatProps) {
               <textarea
                 value={message}
                 onChange={(event) => setMessage(event.target.value)}
-                placeholder="Responda de forma objetiva. O SDR continua a conversa daqui."
+                placeholder="Responda de forma objetiva. Nossos especialistas continuam a conversa daqui."
                 rows={3}
                 className="min-h-28 flex-1 rounded-[1.35rem] border border-border/80 bg-background px-4 py-3 text-sm leading-7 text-foreground outline-none transition-colors placeholder:text-muted-foreground/80 focus:border-foreground/40"
               />
@@ -308,8 +343,8 @@ export function SDRChat({ leadToken }: SDRChatProps) {
       </section>
 
       <aside className="grid content-start gap-6">
-        <section className="surface-panel">
-          <p className="eyebrow">Lead capturado</p>
+        <section className="surface-panel p-6">
+          <p className="eyebrow">SEUS DADOS</p>
           <h2 className="mt-2 font-serif text-2xl text-foreground">
             {session.lead.name || "Contato em análise"}
           </h2>
@@ -319,7 +354,7 @@ export function SDRChat({ leadToken }: SDRChatProps) {
           </div>
         </section>
 
-        <section className="surface-panel">
+        <section className="surface-panel p-6">
           <p className="eyebrow">Resultado</p>
           <h2 className="mt-2 font-serif text-2xl text-foreground">
             {session.result?.profileName || "Diagnóstico recebido"}
@@ -330,7 +365,9 @@ export function SDRChat({ leadToken }: SDRChatProps) {
           </p>
           {session.result?.totalScore !== null &&
           session.result?.totalScore !== undefined ? (
-            <div className="mt-5 inline-flex rounded-full border border-border/70 bg-card px-4 py-2 text-sm font-medium text-foreground">
+            <div
+              className={`mt-5 inline-flex rounded-full border px-4 py-2 text-sm font-medium ${resultBadgeClasses}`}
+            >
               IER {session.result.totalScore}/100
               {session.result.percentage !== null &&
               session.result.percentage !== undefined

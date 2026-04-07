@@ -86,21 +86,28 @@ model QuizSubmission {
 }
 
 model QuizSDRSession {
-  id                String               @id @default(cuid())
-  leadId            String               @map("lead_id")
-  lead              QuizLead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
-  submissionId      String?              @map("submission_id")
-  submission        QuizSubmission?      @relation(fields: [submissionId], references: [id], onDelete: SetNull)
-  status            QuizSDRSessionStatus @default(READY)
-  bookingStatus     QuizBookingStatus    @default(PENDING) @map("booking_status")
-  bookingUrl        String?              @map("booking_url")
-  stageKey          String?              @map("stage_key")
-  summary           String?
-  lastUserMessageAt DateTime?            @map("last_user_message_at")
-  completedAt       DateTime?            @map("completed_at")
-  createdAt         DateTime             @default(now()) @map("created_at")
-  updatedAt         DateTime             @updatedAt @map("updated_at")
-  messages          QuizSDRMessage[]
+  id                      String               @id @default(cuid())
+  leadId                  String               @map("lead_id")
+  lead                    QuizLead             @relation(fields: [leadId], references: [id], onDelete: Cascade)
+  submissionId            String?              @map("submission_id")
+  submission              QuizSubmission?      @relation(fields: [submissionId], references: [id], onDelete: SetNull)
+  status                  QuizSDRSessionStatus @default(READY)
+  bookingStatus           QuizBookingStatus    @default(PENDING) @map("booking_status")
+  bookingUrl              String?              @map("booking_url")
+  scheduledFor            DateTime?            @map("scheduled_for")
+  scheduledUntil          DateTime?            @map("scheduled_until")
+  bookingConfirmedAt      DateTime?            @map("booking_confirmed_at")
+  googleCalendarEventId   String?              @map("google_calendar_event_id")
+  googleCalendarEventUrl  String?              @map("google_calendar_event_url")
+  googleCalendarMeetingUrl String?             @map("google_calendar_meeting_url")
+  bookingMetadata         Json?                @map("booking_metadata")
+  stageKey                String?              @map("stage_key")
+  summary                 String?
+  lastUserMessageAt       DateTime?            @map("last_user_message_at")
+  completedAt             DateTime?            @map("completed_at")
+  createdAt               DateTime             @default(now()) @map("created_at")
+  updatedAt               DateTime             @updatedAt @map("updated_at")
+  messages                QuizSDRMessage[]
 
   @@unique([leadId, submissionId])
   @@map("quiz_sdr_sessions")
@@ -116,4 +123,15 @@ model QuizSDRMessage {
   createdAt DateTime           @default(now()) @map("created_at")
 
   @@map("quiz_sdr_messages")
+}
+
+model QuizAppConfig {
+  id                        String    @id @default("singleton")
+  googleOauthRefreshToken   String?   @map("google_oauth_refresh_token")
+  googleOauthScope          String?   @map("google_oauth_scope")
+  googleOauthConnectedAt    DateTime? @map("google_oauth_connected_at")
+  createdAt                 DateTime  @default(now()) @map("created_at")
+  updatedAt                 DateTime  @updatedAt @map("updated_at")
+
+  @@map("quiz_app_config")
 }

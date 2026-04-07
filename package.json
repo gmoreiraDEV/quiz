@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
+    "start:with-migrate": "npm run prisma:deploy && next start",
     "lint": "eslint",
     "prisma:generate": "npx prisma generate",
     "prisma:deploy": "npx prisma migrate deploy",
-    "prebuild": "npm run prisma:deploy && npm run prisma:generate"
+    "postinstall": "npm run prisma:generate",
+    "prebuild": "npm run prisma:generate"
   },
   "dependencies": {
     "@langchain/langgraph": "^1.2.7",

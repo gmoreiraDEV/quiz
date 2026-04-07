@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build --webpack",
     "start": "next start",
-    "start:with-migrate": "npm run prisma:deploy && next start",
+    "prestart": "npm run prisma:deploy",
     "lint": "eslint",
     "prisma:generate": "npx prisma generate",
     "prisma:deploy": "npx prisma migrate deploy",

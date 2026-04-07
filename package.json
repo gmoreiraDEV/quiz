@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prisma:generate": "prisma generate"
+    "prisma:generate": "npx prisma generate",
+    "prisma:deploy": "npx prisma migrate deploy",
+    "prebuild": "npm run prisma:deploy && npm run prisma:generate"
   },
   "dependencies": {
     "@langchain/langgraph": "^1.2.7",
